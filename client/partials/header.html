@@ -1,0 +1,39 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"></a>
+        </div>
+        <div ng-controller="authCtrl" ng-show="loaded" ng-cloak>
+            <div class="navbar-collapse navbar-right collapse">
+                <form class="navbar-form" ng-submit="signin()">
+                    <div ng-if="!user">
+                        <span class="error" ng-show="auth.unauthorized">
+                            Wrong username or password.
+                        </span>
+                        <div class="form-group">
+                            <input type="text" placeholder="Username" class="form-control" ng-model="auth.username">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" class="form-control" ng-model="auth.password">
+                        </div>
+                        <button type="submit" class="btn btn-success navbar-btn">Sign in</button>
+                        <a href="/register" class="btn btn-success navbar-btn">Register</a>
+                    </div>
+                    <div ng-if="user" class="form-group">
+                        <p class="navbar-text">
+                            Welcome {{ user.username }}!
+                        </p>
+                        <button type="button" class="btn btn-success navbar-btn" ng-click="signout()">Sign out</button>
+                    </div>
+                </form>
+            </div><!--/.navbar-collapse -->
+
+        </div>
+    </div>
+</nav>
